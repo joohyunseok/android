@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.planit.android">
+    package="com.planit.android" >
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>     <!--파일 쓰기 권한-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>      <!--파일 읽기 권한-->
-    <uses-permission android:name="android.permission.CAMERA"/>                     <!--카메라 권한-->
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>  <!--카메라 기능 유무 파악ㄴ-->
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 파일 쓰기 권한 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 파일 읽기 권한 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 카메라 권한 -->
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -14,10 +15,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Android">
+        android:theme="@style/Theme.Android" >
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.planit.android.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
