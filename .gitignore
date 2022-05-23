@@ -1,5 +1,12 @@
 *.iml
 .gradle
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+output.json
+.idea
 /local.properties
 /.idea/caches
 /.idea/libraries
